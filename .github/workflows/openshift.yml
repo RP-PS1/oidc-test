@@ -1,5 +1,5 @@
 name: OpenShift 
-  
+   
 env: 
   IMAGE_REGISTRY: ktpocregistry.azurecr.io/test-github-action
   REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
