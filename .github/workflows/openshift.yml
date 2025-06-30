@@ -10,9 +10,9 @@ env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   OPENSHIFT_NAMESPACE: "my-application"
-  OPENSHIFT_API: ${{ secrets.API_IP }}
-  OPENSHIFT_OAUTH: ${{ secrets.OAUTH_IP }}
-  OPENSHIFT_DOMAIN: ${{ secrets.OCP_DOMAIN }}
+  OPENSHIFT_API: ${{ secrets.OPENSHIFT_API }}
+  OPENSHIFT_OAUTH: ${{ secrets.OPENSHIFT_OAUTH }}
+  OPENSHIFT_DOMAIN: ${{ secrets.OPENSHIFT_DOMAIN }}
   APP_PORT: "8080"
 
 on:
@@ -60,10 +60,10 @@ jobs:
 
     - name: Add custom host entry to /etc/hosts
       run: |
-        IP_ADDRESS_API=${{ env.API_IP }}
-        IP_ADDRESS_OAUTH=${{ env.OAUTH_IP }}
-        HOSTNAME_API="api.${{ env.OCP_DOMAIN }}"
-        HOSTNAME_OAUTH="oauth-openshift.apps.${{ env.OCP_DOMAIN }}  console-openshift-console.apps.${{ env.OCP_DOMAIN }}"
+        IP_ADDRESS_API=${{ env.OPENSHIFT_API }}
+        IP_ADDRESS_OAUTH=${{ env.OPENSHIFT_OAUTH }}
+        HOSTNAME_API="api.${{ env.OPENSHIFT_DOMAIN }}"
+        HOSTNAME_OAUTH="oauth-openshift.apps.${{ env.OPENSHIFT_DOMAIN }}  console-openshift-console.apps.${{ env.OPENSHIFT_DOMAIN }}"
 
         # /etc/hosts 파일에 엔트리 추가
         # 'tee -a'는 파일의 끝에 내용을 추가합니다.
